@@ -7,8 +7,9 @@ riscv64-unknown-elf-gcc \
   -o main.elf main.c amp_def.h matrix_alloc.h matrix_init.h
 ```
 
-is what you use to compile the elf file. Have to modify this to get the actual binary. 
+is what you use to compile the elf file. 
 
+Give's the dissassembly. 
 ```
 riscv64-unknown-elf-objdump -D main.elf > temp.txt 
 ```
@@ -19,10 +20,10 @@ riscv64-unknown-elf-objcopy -O binary main.elf main.bin
 ```
 
 might be useful for simulations.
+```
 riscv64-unknown-elf-objcopy -O ihex main.elf main.hex
+```
 
-
-Give's the dissassembly. 
 
 main.c                # Top-level test program
 amp_def.h             # Inline assembly + encoding macros
