@@ -1,5 +1,5 @@
 
-@author Sooraj Chetput V. 
+@author Sooraj Chetput V., Fan Jing Hoon
 
 ```
 riscv64-unknown-elf-gcc \
