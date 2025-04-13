@@ -53,5 +53,6 @@ void run_matmul() {
 int main() {
 
     run_matmul();
+    HALT();
     return 0;
 }

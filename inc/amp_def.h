@@ -2,13 +2,13 @@
 // the below encodes give you the exact binary representation of the string that 
 // you want. NEED TO DEBUG THESE AND MAKE SURE THAT IT MATCHES WHATEVER ITS SUPPOSED TO BE.
 #define ENCODE_LD_M(mreg, rs1, imm) \
-  (((mreg & 0x3F) << 26) | ((rs1 & 0x1F) << 21) | ((imm & 0x3FF) << 11) | 0x087)
+  (((mreg & 0x3F) << 26) | ((rs1 & 0x1F) << 21) | ((imm & 0x3FF) << 11) | 0x083)
 
 #define ENCODE_ST_M(mreg, rs1, imm) \
-  (((mreg & 0x3F) << 26) | ((rs1 & 0x1F) << 21) | ((imm & 0x3FF) << 11) | 0x0A7)
+  (((mreg & 0x3F) << 26) | ((rs1 & 0x1F) << 21) | ((imm & 0x3FF) << 11) | 0x0A3)
 
 #define ENCODE_GEMM(md, ma, mb, mc) \
-  (((md & 0x3F) << 26) | ((ma & 0x3F) << 20) | ((mb & 0x3F) << 14) | ((mc & 0x3F) << 8) | 0x77)
+  (((md & 0x3F) << 26) | ((ma & 0x3F) << 20) | ((mb & 0x3F) << 14) | ((mc & 0x3F) << 8) | 0x73)
 
 // ===================================================================================
 // the macros below are set up to ensure that the scalar register is correctly 
@@ -43,6 +43,9 @@
 // no scalar register assign for this -- else this will be really hard to work with.
 #define GEMM(md, ma, mb, mc) \
   asm volatile(".word %0" :: "i"(ENCODE_GEMM(md, ma, mb, mc)) : "memory")
+
+#define HALT() \
+  asm volatile(".word %0" :: "i"(0xFFFF) : "memory")
 
 // ===================================================================================
 

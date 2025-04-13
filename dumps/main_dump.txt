@@ -1,5 +1,5 @@
 
-main.elf:     file format elf32-littleriscv
+./dumps/main.elf:     file format elf32-littleriscv
 
 
 Disassembly of section .text:
