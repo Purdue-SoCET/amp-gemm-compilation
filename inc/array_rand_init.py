@@ -23,3 +23,7 @@ def array_to_c_macro(name, arr):
 with open("matrix_init.h", "w") as f:
     f.write(array_to_c_macro("A_INIT", A) + "\n\n")
     f.write(array_to_c_macro("B_INIT", B) + "\n")
+
+C = np.matmul(A, B)
+assert C.dtype == np.float16, f"Expected dtype float16, but got {C.dtype}"
+np.save("output_matrix.npy", C)
